@@ -1,292 +1,1009 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kewhyeni Nakamba | Intellectual Property & Innovation Hub</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kewhyeni Nakamba | Intellectual Property &amp; Innovation Hub</title>
+  <meta name="description" content="Kewhyeni Nakamba works at the intersection of intellectual property, entrepreneurship, innovation systems, and creative storytelling to help innovators protect and scale ideas globally." />
 
-    <meta name="description" content="Kewhyeni Nakamba works at the intersection of intellectual property, entrepreneurship, innovation systems, and creative storytelling to help innovators protect and scale ideas globally.">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <style>
+    /* ── Reset & Base ───────────────────────────────────── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f8f9fa;
-            color: #222;
-            line-height: 1.6;
-        }
+    :root {
+      --navy:    #0a0f1e;
+      --dark:    #111827;
+      --mid:     #1f2937;
+      --accent:  #6366f1;
+      --accent2: #8b5cf6;
+      --gold:    #f59e0b;
+      --text:    #1e293b;
+      --muted:   #64748b;
+      --surface: #ffffff;
+      --bg:      #f1f5f9;
+      --border:  #e2e8f0;
+      --radius:  16px;
+      --shadow:  0 4px 24px rgba(0,0,0,.08);
+      --shadow-lg: 0 12px 48px rgba(0,0,0,.14);
+    }
 
-        header {
-            background: linear-gradient(135deg, #111827, #1f2937);
-            color: white;
-            text-align: center;
-            padding: 80px 20px;
-        }
+    html { scroll-behavior: smooth; }
 
-        header h1 {
-            font-size: 3rem;
-            margin-bottom: 10px;
-        }
+    body {
+      font-family: 'Inter', Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
 
-        header h3 {
-            font-weight: normal;
-            margin-bottom: 20px;
-        }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
 
-        header p {
-            max-width: 700px;
-            margin: auto;
-            margin-bottom: 25px;
-        }
+    img { display: block; max-width: 100%; }
 
-        .hero-buttons a {
-            display: inline-block;
-            background: white;
-            color: #111827;
-            text-decoration: none;
-            padding: 12px 20px;
-            margin: 10px;
-            border-radius: 6px;
-            font-weight: bold;
-        }
+    /* ── Navbar ─────────────────────────────────────────── */
+    .navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 40px;
+      background: rgba(10,15,30,.85);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,255,255,.07);
+      transition: padding .3s;
+    }
 
-        nav {
-            background: #0f172a;
-            text-align: center;
-            padding: 15px;
-        }
+    .navbar .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: #fff;
+      font-weight: 700;
+      letter-spacing: .5px;
+    }
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-            font-weight: bold;
-        }
+    .navbar .logo span { color: var(--gold); }
 
-        section {
-            max-width: 1000px;
-            margin: 30px auto;
-            background: white;
-            padding: 40px;
-            border-radius: 12px;
-        }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
 
-        h2 {
-            color: #111827;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #e5e7eb;
-            padding-bottom: 10px;
-        }
+    .nav-links a {
+      color: rgba(255,255,255,.75);
+      font-size: .9rem;
+      font-weight: 500;
+      letter-spacing: .4px;
+      transition: color .2s;
+    }
 
-        ul {
-            margin-left: 20px;
-            margin-top: 15px;
-        }
+    .nav-links a:hover { color: #fff; text-decoration: none; }
 
-        li {
-            margin-bottom: 12px;
-        }
+    .nav-cta {
+      background: var(--accent);
+      color: #fff !important;
+      padding: 8px 20px;
+      border-radius: 50px;
+      transition: background .2s, transform .2s !important;
+    }
 
-        .tag {
-            display: inline-block;
-            background: #e5e7eb;
-            padding: 8px 14px;
-            margin: 5px;
-            border-radius: 20px;
-            font-size: 14px;
-        }
+    .nav-cta:hover { background: var(--accent2) !important; transform: translateY(-1px); }
 
-        footer {
-            background: #111827;
-            color: white;
-            text-align: center;
-            padding: 30px;
-            margin-top: 40px;
-        }
+    /* hamburger */
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span { width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: .3s; }
 
-        a {
-            color: #2563eb;
-        }
+    /* ── Hero ───────────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 24px 80px;
+      position: relative;
+      background: linear-gradient(135deg, var(--navy) 0%, #0d1b3e 40%, #1a0a3e 100%);
+      overflow: hidden;
+    }
 
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2rem;
-            }
+    /* animated mesh blobs */
+    .hero::before, .hero::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: .35;
+      animation: float 8s ease-in-out infinite alternate;
+    }
 
-            nav a {
-                display: block;
-                margin: 10px 0;
-            }
+    .hero::before {
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, #6366f1, transparent 70%);
+      top: -100px; left: -100px;
+    }
 
-            section {
-                margin: 20px;
-                padding: 25px;
-            }
-        }
-    </style>
+    .hero::after {
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, #8b5cf6, transparent 70%);
+      bottom: -80px; right: -80px;
+      animation-delay: -4s;
+    }
+
+    @keyframes float {
+      from { transform: translate(0, 0) scale(1); }
+      to   { transform: translate(40px, 30px) scale(1.1); }
+    }
+
+    /* grid overlay */
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+
+    .hero-content { position: relative; z-index: 2; max-width: 800px; }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(99,102,241,.18);
+      border: 1px solid rgba(99,102,241,.35);
+      color: #a5b4fc;
+      font-size: .8rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 50px;
+      margin-bottom: 28px;
+    }
+
+    .hero-badge .dot {
+      width: 6px; height: 6px;
+      background: #6ee7b7;
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: .4; transform: scale(.7); }
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.6rem, 6vw, 4.5rem);
+      color: #fff;
+      line-height: 1.15;
+      margin-bottom: 8px;
+    }
+
+    .hero h1 .highlight {
+      background: linear-gradient(90deg, #a5b4fc, #c4b5fd, var(--gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero .subtitle {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,.6);
+      font-weight: 400;
+      letter-spacing: .3px;
+      margin-bottom: 20px;
+    }
+
+    .hero .tagline {
+      font-size: 1.15rem;
+      color: rgba(255,255,255,.82);
+      max-width: 620px;
+      margin: 0 auto 40px;
+    }
+
+    .hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #fff;
+      padding: 14px 32px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: .95rem;
+      transition: transform .2s, box-shadow .2s;
+      box-shadow: 0 4px 20px rgba(99,102,241,.4);
+    }
+
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(99,102,241,.55); text-decoration: none; }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: #fff;
+      padding: 13px 32px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: .95rem;
+      border: 1.5px solid rgba(255,255,255,.3);
+      transition: border-color .2s, background .2s;
+    }
+
+    .btn-outline:hover { border-color: #fff; background: rgba(255,255,255,.07); text-decoration: none; }
+
+    /* scroll indicator */
+    .scroll-hint {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255,255,255,.35);
+      font-size: .75rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      animation: fadeInUp 1s ease 1s both;
+    }
+
+    .scroll-arrow {
+      width: 20px; height: 20px;
+      border-right: 2px solid rgba(255,255,255,.35);
+      border-bottom: 2px solid rgba(255,255,255,.35);
+      transform: rotate(45deg);
+      animation: bounce 1.5s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: rotate(45deg) translate(0,0); }
+      50%       { transform: rotate(45deg) translate(4px,4px); }
+    }
+
+    /* ── Section Layout ─────────────────────────────────── */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+    .section { padding: 100px 0; }
+
+    .section-label {
+      display: inline-block;
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+      color: var(--dark);
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    .section-intro {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 600px;
+      margin-bottom: 60px;
+    }
+
+    /* reveal animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ── About ──────────────────────────────────────────── */
+    #about { background: var(--bg); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .about-visual {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .about-ring {
+      width: 320px; height: 320px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 50%, var(--gold) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .about-ring::before {
+      content: '';
+      position: absolute;
+      inset: 8px;
+      border-radius: 50%;
+      background: var(--bg);
+    }
+
+    .about-monogram {
+      position: relative;
+      z-index: 1;
+      font-family: 'Playfair Display', serif;
+      font-size: 5rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--accent), var(--gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .floating-badge {
+      position: absolute;
+      background: var(--surface);
+      border-radius: 12px;
+      padding: 10px 16px;
+      box-shadow: var(--shadow-lg);
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--dark);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .floating-badge .icon { font-size: 1.2rem; }
+    .badge-1 { top: 10px; right: -10px; }
+    .badge-2 { bottom: 30px; left: -20px; }
+
+    .about-text p { color: var(--muted); margin-bottom: 18px; font-size: 1.05rem; }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+
+    .tag {
+      background: linear-gradient(135deg, #eef2ff, #f5f3ff);
+      color: var(--accent);
+      border: 1px solid #c7d2fe;
+      padding: 7px 16px;
+      border-radius: 50px;
+      font-size: .82rem;
+      font-weight: 600;
+      letter-spacing: .3px;
+    }
+
+    /* ── Stats bar ──────────────────────────────────────── */
+    .stats-bar {
+      background: linear-gradient(135deg, var(--dark), var(--mid));
+      padding: 48px 0;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      text-align: center;
+    }
+
+    .stat-item { color: #fff; }
+
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.6rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, #a5b4fc, var(--gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .stat-label { font-size: .85rem; color: rgba(255,255,255,.55); letter-spacing: .5px; margin-top: 4px; }
+
+    /* ── Research ───────────────────────────────────────── */
+    #research { background: var(--surface); }
+
+    .research-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+    }
+
+    .research-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      transition: transform .25s, box-shadow .25s, border-color .25s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .research-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      opacity: 0;
+      transition: opacity .25s;
+    }
+
+    .research-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: #c7d2fe; }
+    .research-card:hover::before { opacity: 1; }
+
+    .rc-icon {
+      width: 48px; height: 48px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #eef2ff, #f5f3ff);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 16px;
+    }
+
+    .rc-title { font-weight: 700; color: var(--dark); margin-bottom: 6px; }
+    .rc-desc  { font-size: .88rem; color: var(--muted); margin-bottom: 16px; line-height: 1.6; }
+
+    .rc-link {
+      font-size: .84rem;
+      font-weight: 600;
+      color: var(--accent);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .rc-link:hover { color: var(--accent2); }
+
+    /* ── Projects ───────────────────────────────────────── */
+    #projects { background: var(--bg); }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 28px;
+    }
+
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+      transition: transform .25s, box-shadow .25s;
+      position: relative;
+    }
+
+    .project-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+
+    .pc-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      font-weight: 700;
+      color: #e0e7ff;
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+
+    .pc-title { font-size: 1.1rem; font-weight: 700; color: var(--dark); margin-bottom: 10px; }
+    .pc-desc  { font-size: .9rem; color: var(--muted); line-height: 1.6; }
+
+    .pc-tag {
+      display: inline-block;
+      margin-top: 20px;
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .8px;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: #eef2ff;
+      padding: 4px 12px;
+      border-radius: 50px;
+    }
+
+    /* ── Network ────────────────────────────────────────── */
+    #network { background: var(--surface); }
+
+    .network-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .network-card {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      transition: transform .25s, box-shadow .25s, border-color .25s;
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    .network-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: #c7d2fe; text-decoration: none; }
+
+    .nc-icon {
+      width: 52px; height: 52px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      flex-shrink: 0;
+    }
+
+    .nc-body {}
+    .nc-name { font-weight: 700; color: var(--dark); margin-bottom: 2px; }
+    .nc-role { font-size: .84rem; color: var(--muted); }
+
+    .nc-arrow {
+      margin-left: auto;
+      color: var(--muted);
+      font-size: 1.1rem;
+      transition: transform .2s, color .2s;
+    }
+
+    .network-card:hover .nc-arrow { transform: translateX(4px); color: var(--accent); }
+
+    /* platform colours */
+    .nc-linkedin .nc-icon { background: #e8f0fe; color: #0077b5; }
+    .nc-twitter  .nc-icon { background: #e8f5fd; color: #1da1f2; }
+    .nc-github   .nc-icon { background: #f0f0f0; color: #24292e; }
+    .nc-ssrn     .nc-icon { background: #fff3e0; color: #e65100; }
+    .nc-zenodo   .nc-icon { background: #e8f5e9; color: #2e7d32; }
+    .nc-orcid    .nc-icon { background: #fff8e1; color: #a6ce39; }
+
+    /* ── Contact ────────────────────────────────────────── */
+    #contact {
+      background: linear-gradient(135deg, var(--navy) 0%, #0d1b3e 100%);
+      padding: 100px 0;
+      text-align: center;
+    }
+
+    #contact .section-label { color: #a5b4fc; }
+
+    #contact .section-title { color: #fff; }
+
+    .contact-sub {
+      color: rgba(255,255,255,.6);
+      font-size: 1.05rem;
+      margin-bottom: 48px;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .contact-email {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: rgba(255,255,255,.9);
+      font-size: 1.1rem;
+      font-weight: 600;
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.15);
+      padding: 14px 28px;
+      border-radius: 50px;
+      transition: background .2s;
+      margin-bottom: 40px;
+    }
+
+    .contact-email:hover { background: rgba(255,255,255,.12); text-decoration: none; }
+
+    /* ── Footer ─────────────────────────────────────────── */
+    footer {
+      background: #060b15;
+      color: rgba(255,255,255,.4);
+      text-align: center;
+      padding: 28px 24px;
+      font-size: .85rem;
+    }
+
+    footer a { color: rgba(255,255,255,.6); }
+    footer a:hover { color: #fff; }
+
+    /* ── Mobile ─────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .about-visual { display: none; }
+      .stats-grid  { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 640px) {
+      .navbar { padding: 14px 20px; }
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: rgba(10,15,30,.97); padding: 20px; gap: 16px; }
+      .nav-links.open { display: flex; }
+      .hamburger { display: flex; }
+      .hero { padding: 100px 20px 70px; }
+      .section { padding: 70px 0; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: none; }
+    }
+  </style>
 </head>
 
 <body>
 
-<header>
-    <h1>Kewhyeni Nakamba</h1>
-
-    <h3>
-        Intellectual Property Strategist | Innovation Builder | Creative Systems Thinker
-    </h3>
-
-    <p>
-        Building systems that help innovators, creators, and businesses protect,
-        scale, and commercialize ideas globally through intellectual property,
-        entrepreneurship, and creative innovation.
-    </p>
-
-    <div class="hero-buttons">
-        <a href="#research">View Research</a>
-        <a href="#projects">Explore Projects</a>
-        <a href="#network">Connect</a>
-    </div>
-</header>
-
-<nav>
-    <a href="#about">About</a>
-    <a href="#research">Research</a>
-    <a href="#projects">Projects</a>
-    <a href="#network">Network</a>
-    <a href="#contact">Contact</a>
+<!-- ── Navbar ────────────────────────────────────────────── -->
+<nav class="navbar" role="navigation" aria-label="Main navigation">
+  <div class="logo">KN<span>.</span></div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#network">Network</a></li>
+    <li><a href="#contact" class="nav-cta">Connect</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
-<section id="about">
-    <h2>About</h2>
-
-    <p>
-        I work at the intersection of intellectual property, entrepreneurship,
-        innovation systems, and creative storytelling.
-    </p>
-
-    <p>
-        My mission is to transform traditional intellectual property systems into
-        dynamic ecosystems that empower innovators, creators, startups, and
-        businesses to protect and leverage their ideas globally.
-    </p>
-
-    <p>
-        Through research, strategic initiatives, digital platforms, and thought
-        leadership, I aim to create meaningful social impact while building
-        globally scalable opportunities.
-    </p>
-
-    <div>
-        <span class="tag">Intellectual Property</span>
-        <span class="tag">Innovation Strategy</span>
-        <span class="tag">Entrepreneurship</span>
-        <span class="tag">Creative Storytelling</span>
-        <span class="tag">Global Innovation</span>
+<!-- ── Hero ──────────────────────────────────────────────── -->
+<header class="hero" id="home">
+  <div class="hero-grid" aria-hidden="true"></div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="dot" aria-hidden="true"></span>
+      IP Strategist &amp; Innovation Builder
     </div>
-</section>
 
-<section id="research">
-    <h2>Research & Publications</h2>
+    <h1>
+      Kewhyeni<br />
+      <span class="highlight">Nakamba</span>
+    </h1>
 
-    <p>
-        My research focuses on intellectual property systems,
-        entrepreneurship, innovation ecosystems, and global knowledge access.
+    <p class="subtitle">Intellectual Property · Entrepreneurship · Creative Systems</p>
+
+    <p class="tagline">
+      Building systems that empower innovators and creators to protect,
+      structure, and scale their ideas globally through IP strategy,
+      research, and creative innovation.
     </p>
 
-    <ul>
-        <li><a href="https://orcid.org/0009-0001-3703-8" target="_blank">ORCID Academic Profile</a></li>
-        <li><a href="#" target="_blank">SSRN Publications</a></li>
-        <li><a href="#" target="_blank">Zenodo Research Archive</a></li>
-        <li><a href="#" target="_blank">White Papers & Policy Research</a></li>
-    </ul>
+    <div class="hero-actions">
+      <a href="#research" class="btn-primary">
+        <span>&#128218;</span> View Research
+      </a>
+      <a href="#projects" class="btn-outline">
+        <span>&#10024;</span> Explore Projects
+      </a>
+    </div>
+  </div>
+
+  <div class="scroll-hint" aria-hidden="true">
+    <span>Scroll</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</header>
+
+<!-- ── About ─────────────────────────────────────────────── -->
+<section class="section" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-visual reveal" aria-hidden="true">
+        <div class="about-ring">
+          <div class="about-monogram">KN</div>
+        </div>
+        <div class="floating-badge badge-1">
+          <span class="icon">&#127775;</span> IP Strategist
+        </div>
+        <div class="floating-badge badge-2">
+          <span class="icon">&#127758;</span> Global Innovator
+        </div>
+      </div>
+
+      <div class="about-text reveal">
+        <span class="section-label">About</span>
+        <h2 class="section-title">Where Law Meets<br />Innovation</h2>
+        <p>
+          I work at the intersection of intellectual property, entrepreneurship,
+          and creative storytelling — building systems that help innovators and
+          creators protect, structure, and scale their ideas globally.
+        </p>
+        <p>
+          My work combines legal frameworks, innovation strategy, and digital
+          tools to transform ideas into structured intellectual assets and
+          real-world impact.
+        </p>
+        <p>
+          Through research, strategic initiatives, and thought leadership,
+          I aim to democratize access to IP systems for creators and
+          entrepreneurs everywhere.
+        </p>
+        <div class="tags">
+          <span class="tag">Intellectual Property</span>
+          <span class="tag">Innovation Strategy</span>
+          <span class="tag">Entrepreneurship</span>
+          <span class="tag">Creative Systems</span>
+          <span class="tag">Global Innovation</span>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section id="projects">
-    <h2>Projects & Initiatives</h2>
+<!-- ── Stats ──────────────────────────────────────────────── -->
+<div class="stats-bar" aria-label="Key highlights">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item reveal">
+        <div class="stat-num">4+</div>
+        <div class="stat-label">Research Platforms</div>
+      </div>
+      <div class="stat-item reveal">
+        <div class="stat-num">5+</div>
+        <div class="stat-label">Active Projects</div>
+      </div>
+      <div class="stat-item reveal">
+        <div class="stat-num">6+</div>
+        <div class="stat-label">Network Platforms</div>
+      </div>
+      <div class="stat-item reveal">
+        <div class="stat-num">1</div>
+        <div class="stat-label">Clear Mission</div>
+      </div>
+    </div>
+  </div>
+</div>
 
-    <p>
-        Selected projects focused on innovation systems,
-        legal-tech development, and entrepreneurship.
+<!-- ── Research ───────────────────────────────────────────── -->
+<section class="section" id="research">
+  <div class="container">
+    <span class="section-label reveal">Research &amp; Publications</span>
+    <h2 class="section-title reveal">Knowledge That Moves Ideas Forward</h2>
+    <p class="section-intro reveal">
+      Focused on intellectual property systems, entrepreneurship,
+      innovation ecosystems, and global knowledge access.
     </p>
 
-    <ul>
-        <li>IP Awareness & Innovation Framework</li>
-        <li>Legal-Tech Tools for Creator Protection</li>
-        <li>Digital Knowledge Platforms</li>
-        <li>Research Documentation Systems</li>
-        <li>Creative Entrepreneurship Initiatives</li>
-    </ul>
+    <div class="research-cards">
+      <div class="research-card reveal">
+        <div class="rc-icon">&#127891;</div>
+        <div class="rc-title">ORCID Academic Profile</div>
+        <div class="rc-desc">Verified scholarly identity linking all research outputs and academic contributions.</div>
+        <a href="https://orcid.org/0009-0001-3703-8" target="_blank" rel="noopener noreferrer" class="rc-link">View Profile &#8594;</a>
+      </div>
+
+      <div class="research-card reveal">
+        <div class="rc-icon">&#128196;</div>
+        <div class="rc-title">SSRN Publications</div>
+        <div class="rc-desc">Pre-prints and working papers on IP law, innovation policy, and entrepreneurship systems.</div>
+        <a href="https://www.ssrn.com/" target="_blank" rel="noopener noreferrer" class="rc-link">Browse Papers &#8594;</a>
+      </div>
+
+      <div class="research-card reveal">
+        <div class="rc-icon">&#128202;</div>
+        <div class="rc-title">Zenodo Research Archive</div>
+        <div class="rc-desc">Open-access repository for datasets, reports, and research documentation outputs.</div>
+        <a href="https://zenodo.org/" target="_blank" rel="noopener noreferrer" class="rc-link">View Archive &#8594;</a>
+      </div>
+
+      <div class="research-card reveal">
+        <div class="rc-icon">&#128218;</div>
+        <div class="rc-title">White Papers &amp; Policy Research</div>
+        <div class="rc-desc">In-depth analyses of IP frameworks, innovation policy, and knowledge commercialisation.</div>
+        <a href="#contact" class="rc-link">Request Access &#8594;</a>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section id="network">
-    <h2>Network & Platforms</h2>
-
-    <p>
-        My ecosystem connects research, innovation,
-        professional networking, and public thought leadership.
+<!-- ── Projects ───────────────────────────────────────────── -->
+<section class="section" id="projects">
+  <div class="container">
+    <span class="section-label reveal">Projects &amp; Initiatives</span>
+    <h2 class="section-title reveal">Ideas in Motion</h2>
+    <p class="section-intro reveal">
+      Selected work at the frontier of innovation systems, legal-tech,
+      and creative entrepreneurship — documented through iterative development cycles.
     </p>
 
-    <ul>
-        <li>
-            <a href="https://zm.linkedin.com/in/kewhyeni-nakamba-globalleader" target="_blank">
-                LinkedIn
-            </a> – Professional networking & leadership
-        </li>
+    <div class="projects-grid">
+      <div class="project-card reveal">
+        <div class="pc-number">01</div>
+        <div class="pc-title">IP Awareness &amp; Innovation Framework</div>
+        <div class="pc-desc">A conceptual model for making intellectual property accessible and actionable for innovators and creators at every stage.</div>
+        <span class="pc-tag">Conceptual Model</span>
+      </div>
 
-        <li>
-            <a href="https://x.com/Kssilhouette" target="_blank">
-                X (Twitter)
-            </a> – Public discourse & thought leadership
-        </li>
+      <div class="project-card reveal">
+        <div class="pc-number">02</div>
+        <div class="pc-title">Legal-Tech Tools for Creator Protection</div>
+        <div class="pc-desc">Exploring digital tools and systems that simplify IP registration, licensing, and enforcement for creative professionals.</div>
+        <span class="pc-tag">Legal-Tech</span>
+      </div>
 
-        <li>
-            <a href="https://orcid.org/0009-0001-3703-8" target="_blank">
-                ORCID
-            </a> – Verified academic identity
-        </li>
+      <div class="project-card reveal">
+        <div class="pc-number">03</div>
+        <div class="pc-title">Digital Knowledge Structuring Platforms</div>
+        <div class="pc-desc">Building digital ecosystems that organise, protect, and distribute knowledge assets for maximum global reach and impact.</div>
+        <span class="pc-tag">Digital Platform</span>
+      </div>
 
-        <li>
-            <a href="#" target="_blank">
-                GitHub
-            </a> – Technical development
-        </li>
+      <div class="project-card reveal">
+        <div class="pc-number">04</div>
+        <div class="pc-title">Open Research Documentation Projects</div>
+        <div class="pc-desc">Transparent, collaborative research documentation initiatives supporting open knowledge and global academic access.</div>
+        <span class="pc-tag">Open Research</span>
+      </div>
 
-        <li>
-            <a href="#" target="_blank">
-                SSRN
-            </a> – Academic publishing
-        </li>
-
-        <li>
-            <a href="#" target="_blank">
-                Zenodo
-            </a> – Research archiving
-        </li>
-    </ul>
+      <div class="project-card reveal">
+        <div class="pc-number">05</div>
+        <div class="pc-title">Creative Entrepreneurship Initiatives</div>
+        <div class="pc-desc">Programmes connecting IP strategy with creative industries to help artists, writers, and innovators build sustainable IP portfolios.</div>
+        <span class="pc-tag">Entrepreneurship</span>
+      </div>
+    </div>
+  </div>
 </section>
 
+<!-- ── Network ────────────────────────────────────────────── -->
+<section class="section" id="network">
+  <div class="container">
+    <span class="section-label reveal">Network &amp; Platforms</span>
+    <h2 class="section-title reveal">Connected Ecosystem</h2>
+    <p class="section-intro reveal">
+      A unified digital presence spanning academic research, professional
+      networking, and public thought leadership.
+    </p>
+
+    <div class="network-grid">
+      <a href="https://zm.linkedin.com/in/kewhyeni-nakamba-globalleader" target="_blank" rel="noopener noreferrer"
+         class="network-card nc-linkedin reveal" aria-label="LinkedIn profile">
+        <div class="nc-icon">in</div>
+        <div class="nc-body">
+          <div class="nc-name">LinkedIn</div>
+          <div class="nc-role">Professional identity &amp; networking</div>
+        </div>
+        <span class="nc-arrow" aria-hidden="true">&#8594;</span>
+      </a>
+
+      <a href="https://x.com/Kssilhouette" target="_blank" rel="noopener noreferrer"
+         class="network-card nc-twitter reveal" aria-label="X (Twitter) profile">
+        <div class="nc-icon">𝕏</div>
+        <div class="nc-body">
+          <div class="nc-name">X (Twitter)</div>
+          <div class="nc-role">Thought leadership &amp; public discourse</div>
+        </div>
+        <span class="nc-arrow" aria-hidden="true">&#8594;</span>
+      </a>
+
+      <a href="https://github.com/KEWHYENIWNAKAMBA" target="_blank" rel="noopener noreferrer"
+         class="network-card nc-github reveal" aria-label="GitHub profile">
+        <div class="nc-icon">&#128025;</div>
+        <div class="nc-body">
+          <div class="nc-name">GitHub</div>
+          <div class="nc-role">Technical development &amp; project building</div>
+        </div>
+        <span class="nc-arrow" aria-hidden="true">&#8594;</span>
+      </a>
+
+      <a href="https://www.ssrn.com/" target="_blank" rel="noopener noreferrer"
+         class="network-card nc-ssrn reveal" aria-label="SSRN profile">
+        <div class="nc-icon">&#128196;</div>
+        <div class="nc-body">
+          <div class="nc-name">SSRN</div>
+          <div class="nc-role">Academic publishing &amp; pre-prints</div>
+        </div>
+        <span class="nc-arrow" aria-hidden="true">&#8594;</span>
+      </a>
+
+      <a href="https://zenodo.org/" target="_blank" rel="noopener noreferrer"
+         class="network-card nc-zenodo reveal" aria-label="Zenodo profile">
+        <div class="nc-icon">&#128202;</div>
+        <div class="nc-body">
+          <div class="nc-name">Zenodo</div>
+          <div class="nc-role">Open-access research archiving</div>
+        </div>
+        <span class="nc-arrow" aria-hidden="true">&#8594;</span>
+      </a>
+
+      <a href="https://orcid.org/0009-0001-3703-8" target="_blank" rel="noopener noreferrer"
+         class="network-card nc-orcid reveal" aria-label="ORCID profile">
+        <div class="nc-icon">&#127890;</div>
+        <div class="nc-body">
+          <div class="nc-name">ORCID</div>
+          <div class="nc-role">Verified academic identity</div>
+        </div>
+        <span class="nc-arrow" aria-hidden="true">&#8594;</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── Contact ────────────────────────────────────────────── -->
 <section id="contact">
-    <h2>Contact</h2>
-
-    <p>
-        Open to collaborations, speaking engagements,
-        partnerships, innovation projects, and strategic opportunities.
+  <div class="container">
+    <span class="section-label reveal">Get In Touch</span>
+    <h2 class="section-title reveal" style="color:#fff;">Let's Build Something<br />That Matters</h2>
+    <p class="contact-sub reveal">
+      Open to collaborations, speaking engagements, research partnerships,
+      innovation projects, and strategic opportunities.
     </p>
-
-    <p>Email: yourprofessionalemail@example.com</p>
+    <div class="reveal">
+      <a href="mailto:yourprofessionalemail@example.com" class="contact-email">
+        <span>&#9993;</span> yourprofessionalemail@example.com
+      </a>
+    </div>
+    <div class="reveal">
+      <a href="#network" class="btn-outline" style="border-color:rgba(255,255,255,.3);color:#fff;">
+        View All Platforms
+      </a>
+    </div>
+  </div>
 </section>
 
+<!-- ── Footer ─────────────────────────────────────────────── -->
 <footer>
-    <p>
-        © 2026 Kewhyeni Nakamba | Building systems at the intersection of law,
-        innovation, and global intellectual property.
-    </p>
+  <p>
+    &copy; 2026 <a href="#home">Kewhyeni Nakamba</a> &nbsp;|&nbsp;
+    Building systems at the intersection of law, innovation, and global intellectual property.
+  </p>
 </footer>
+
+<!-- ── Scripts ───────────────────────────────────────────── -->
+<script>
+  // Hamburger menu
+  const hamburger = document.getElementById('hamburger');
+  const navLinks  = document.getElementById('navLinks');
+
+  hamburger.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', open);
+  });
+
+  // Close menu on link click
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // Scroll-reveal via IntersectionObserver
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), index * 60);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  reveals.forEach(el => observer.observe(el));
+</script>
 
 </body>
 </html>
